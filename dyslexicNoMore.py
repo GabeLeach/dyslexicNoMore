@@ -13,6 +13,19 @@
     #if i.length == 3 bold first 2 char
     #else bold 3 chars
 
+#boilerplate 
 def dyslexicNoMore(text):
-    newtext = text
+    splitted = text.split(" ")
+    j = ("")
+    print (splitted)
+    for word in splitted:
+        if (len(word) <= 2):
+            print("1")
+        if (len(word) == 3):
+            print("2")
+        if (len(word) > 3):
+            print("3")
+    new = (" ").join(splitted)
+    print (new)    
 
+dyslexicNoMore("I eat sausages")
