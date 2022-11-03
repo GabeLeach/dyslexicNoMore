@@ -50,7 +50,7 @@ def getFile():
     text = ""
     for page in reader.pages:
         text += page.extract_text() + '\n'
-    #print (text)
+    #send the parse to append function for formatting
     done = appendText(text)
     print (done)
 getFile()
