@@ -1,5 +1,4 @@
-import markdown
-import PyPDF2
+from PyPDF2 import PdfReader
 #A small app to enable the parsing of text into a more dyslexic friendly format.
 #Concept is to allow user to drop in file and then we parse that and embolden the first couple of letters of each word.
 
@@ -10,13 +9,15 @@ import PyPDF2
 #output back to the user
 #once functionality is complete, create a nice UI
 
+
+#====================================================THE TEXT APPENDER===============================================================#
 #for i in text:
     #if i.length <=2 bold first char
     #if i.length == 3 bold first 2 char
     #else bold 3 chars
 
 #boilerplate 
-def dyslexicNoMore(text):
+def appendText(text):
     splitted = text.split(" ")
     friendly = []
     print (splitted)
@@ -33,6 +34,22 @@ def dyslexicNoMore(text):
     new = (" ").join(friendly)
     print (new)    
 
-dyslexicNoMore("Hi I eat sausages every day")
+appendText("Hi I eat sausages every day")
 
-#def getFile():
+
+#====================================================THE FILE HANDLER ===============================================================#
+#take user file
+#convert to markdown
+#send raw text to text appender
+#get back text and output as a .md file or even pdf if possible
+def getFile():
+
+    reader = PdfReader("example.pdf")
+    text = ""
+    for page in reader.pages:
+        text += page.extract_text()
+    print (text)
+    check = text.split()
+    print (check)
+
+getFile()
