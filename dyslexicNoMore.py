@@ -1,3 +1,5 @@
+import markdown
+import PyPDF2
 #A small app to enable the parsing of text into a more dyslexic friendly format.
 #Concept is to allow user to drop in file and then we parse that and embolden the first couple of letters of each word.
 
@@ -16,16 +18,21 @@
 #boilerplate 
 def dyslexicNoMore(text):
     splitted = text.split(" ")
-    j = ("")
+    friendly = []
     print (splitted)
     for word in splitted:
         if (len(word) <= 2):
             print("1")
+            friendly.append(("**" + word[0:1] + "**" + word[1:]))
         if (len(word) == 3):
+            friendly.append(("**" + word[0:2] + "**" + word[2:]))
             print("2")
-        if (len(word) > 3):
+        if (len(word) >= 4):
+            friendly.append(("**" + word[0:4] + "**" + word[4:]))
             print("3")
-    new = (" ").join(splitted)
+    new = (" ").join(friendly)
     print (new)    
 
-dyslexicNoMore("I eat sausages")
+dyslexicNoMore("Hi I eat sausages every day")
+
+#def getFile():
