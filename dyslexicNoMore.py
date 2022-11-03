@@ -17,24 +17,26 @@ from PyPDF2 import PdfReader
     #else bold 3 chars
 
 #boilerplate 
-def appendText(text):
-    splitted = text.split(" ")
+def appendText(file):
+    splitted = file.split(" ")
     friendly = []
     print (splitted)
     for word in splitted:
+        if word == ('\n'):
+            break
         if (len(word) <= 2):
-            print("1")
+            #print("1")
             friendly.append(("**" + word[0:1] + "**" + word[1:]))
         if (len(word) == 3):
             friendly.append(("**" + word[0:2] + "**" + word[2:]))
-            print("2")
+           #print("2")
         if (len(word) >= 4):
             friendly.append(("**" + word[0:4] + "**" + word[4:]))
-            print("3")
+            #print("3")
     new = (" ").join(friendly)
-    print (new)    
+    return (new)
 
-appendText("Hi I eat sausages every day")
+#appendText("Hi I eat sausages every day")
 
 
 #====================================================THE FILE HANDLER ===============================================================#
@@ -47,9 +49,8 @@ def getFile():
     reader = PdfReader("example.pdf")
     text = ""
     for page in reader.pages:
-        text += page.extract_text()
-    print (text)
-    check = text.split()
-    print (check)
-
+        text += page.extract_text() + '\n'
+    #print (text)
+    done = appendText(text)
+    print (done)
 getFile()
