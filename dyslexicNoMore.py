@@ -40,17 +40,22 @@ def appendText(file):
 
 
 #====================================================THE FILE HANDLER ===============================================================#
+#====================THE GET FILE HANDLER =============================#
 #take user file
 #convert to markdown
 #send raw text to text appender
 #get back text and output as a .md file or even pdf if possible
-def getFile():
+def getFile(userInput):
 
-    reader = PdfReader("example.pdf")
+    reader = PdfReader(userInput)
     text = ""
     for page in reader.pages:
         text += page.extract_text() + '\n'
     #send the parse to append function for formatting
     done = appendText(text)
     print (done)
-getFile()
+getFile("example.pdf")
+#====================THE MAKE MD FILE HANDLER =============================#
+#Now that the PDF has been read and formatted we wanna output it to MarkDown.
+def newFormat():
+    
