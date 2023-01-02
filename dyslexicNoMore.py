@@ -58,4 +58,4 @@ getFile("example.pdf")
 #====================THE MAKE MD FILE HANDLER =============================#
 #Now that the PDF has been read and formatted we wanna output it to MarkDown.
 def newFormat():
-    
+    return 0
